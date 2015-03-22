@@ -1,22 +1,22 @@
 import React from 'react';
-import component from 'omniscient';
+//import component from 'omniscient';
 import immstruct from 'immstruct';
 
+//import SimpleExample from "./simple";
+
 import App from './app';
-import '../less/index.less';
+
+import LiveMap from './live-map';
 
 let data = immstruct({
-  counter: 0
+    latlng: [0,
+             27.566666700000040000]
 });
 
-let render = () =>
+const render = () =>
   React.render(
-    App({ counter: data.cursor('counter') }),
+      LiveMap(data.cursor('latlng')),
     document.body);
 
 render();
 data.on('swap', render);
-
-setInterval(
-  () => data.cursor().update('counter', i => i + 1),
-  1000);
