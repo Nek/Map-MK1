@@ -17,16 +17,16 @@ module.exports = {
   ],
   module: {
     loaders: [
-      {
+        {
         test: /\.js$/,
         exclude: /node_modules/,
         loaders: [
           'react-hot',
-          '6to5-loader'
+          'babel-loader'
           //'6to5-loader?experimental&optional=selfContained' // http://6to5.org/docs/usage/experimental/
         ]
       },
-      {
+        {
         test: /\.less$/,
         loaders: [
           "style-loader",
@@ -34,7 +34,14 @@ module.exports = {
           "autoprefixer-loader?browsers=last 2 version",
           "less-loader?strictMath&cleancss"
         ]
-      }
+      },
+        { test: /\.css$/, loader: "style-loader!css-loader" },
+        { test: /\.(png|woff)$/, loader: 'url-loader?limit=100000' },
+        {
+        test:/\.html$/,
+        loader: 'html-loader'
+      },
+
     ]
   }
 };
