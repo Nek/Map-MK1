@@ -1,8 +1,12 @@
 import React from 'react';
-//import component from 'omniscient';
 import immstruct from 'immstruct';
+import PouchDB from 'pouchdb';
+import auth from 'pouchdb-authentication';
 
-//import SimpleExample from "./simple";
+const db = new PouchDB('https://couchdb-eff310.smileupps.com/kittens');
+db.info().then(function (info) {
+  console.log(info);
+});
 
 import App from './app';
 
